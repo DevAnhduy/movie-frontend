@@ -1,0 +1,8 @@
+.loadingCommon {
+	&.fullHeight {
+		width: 100%;
+		height: 100vh;
+		position: absolute !important;
+		top: 40%;
+	}
+}

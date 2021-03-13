@@ -1,0 +1,25 @@
+@import './variable.scss';
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: inherit;
+}
+
+html {
+	/* default font-size: 16px -> 62.5% * 16px = 10px */
+	scroll-behavior: smooth;
+	/* => 1rem = 8px*/
+	font-size: 50%;
+	@include mq('tablet') {
+		/* => 1rem = 10px*/
+		font-size: 62.5%;
+	}
+}
+
+body {
+	box-sizing: border-box;
+	font-size: $font-size-paragraph1;
+	color: $color-black;
+	// font-family: 'Poppins', sans-serif;
+}

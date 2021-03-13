@@ -1,0 +1,53 @@
+@import '../../styles/variable.scss';
+
+.profile {
+	background: $color-primary-2;
+	min-height: 95vh;
+	padding: 1rem;
+
+	@include mq('tablet') {
+		padding: 3rem;
+	}
+
+	.name {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.cardContainer {
+		background: $color-primary-1;
+		background: linear-gradient(
+			124deg,
+			$color-primary-1 0%,
+			$color-primary-2 100%
+		);
+		border-radius: 5px;
+		box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.2);
+		color: $color-white;
+		padding: 3rem 1rem;
+		margin: 0 3rem;
+		position: relative;
+		width: 500px;
+		max-width: 100%;
+		text-align: center;
+		margin: auto;
+		.type.pro {
+			color: #231e39;
+			background-color: #febb0b;
+			border-radius: 3px;
+			font-size: $font-size-subtitle1;
+			font-weight: bold;
+			padding: 3px 7px;
+			position: absolute;
+			top: 3rem;
+			left: 3rem;
+		}
+		.avatar {
+			border: 1px solid $color-primary-2;
+			border-radius: 50%;
+			padding: 7px;
+			width: 10rem;
+			height: 10rem;
+		}
+	}
+}

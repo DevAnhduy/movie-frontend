@@ -1,0 +1,10 @@
+.formUserProfile {
+	padding: 0 4rem;
+	:global {
+		.ant-form-item-label {
+			width: 100%;
+			text-transform: capitalize;
+			text-align: left;
+		}
+	}
+}

@@ -1,9 +1,9 @@
 {
-  "name": "wordsmine_admin_dashboard",
+  "name": "movie",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/KieIO/wordsmine_admin_dashboard.git",
-  "author": "goware",
+  "author": "devanhduy",
   "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -11,12 +11,12 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.4.3",
     "axios": "^0.19.2",
-    "chart.js": "^2.9.4",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-ga": "^3.3.0",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.2.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -27,7 +27,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "set PORT=3001 && react-scripts start",
+    "dev": "set PORT=3001 && set HTTPS=true && set SSL_CRT_FILE=cert.pem && set SSL_KEY_FILE=key.pem && react-scripts start",
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

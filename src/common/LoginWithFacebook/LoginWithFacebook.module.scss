@@ -1,0 +1,40 @@
+.authWithFacebook {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 1rem auto;
+	button {
+		background-color: rgba(#fff, 0) !important;
+		border: 0.05rem solid #fff !important;
+		border-radius: 0.5rem !important;
+		color: #fff !important;
+		box-shadow: 0 6px 10px #00000026 !important;
+		transition: all 0.2s;
+		cursor: pointer;
+		width: 15rem;
+		font-size: 14px;
+		text-transform: none;
+		display: flex !important;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+		& > span {
+			margin-right: 10px;
+		}
+		&:disabled {
+			background-color: #ddd !important;
+			color: #ccc !important;
+			border: none !important;
+		}
+		&:hover {
+			background-color: rgba(#fff, 0.3) !important;
+			box-shadow: 0 6px 10px #00000040 !important;
+		}
+		> div {
+			border-radius: 0.5rem !important;
+			background: rgba(255, 255, 255, 0) !important;
+			margin-bottom: -4px !important;
+			margin-right: 0 !important;
+		}
+	}
+}
