@@ -23,7 +23,7 @@ const LoginWithFacebookComponent = ({ history }) => {
 					social_id: userId,
 					create_type: 'facebook',
 				}
-				const rs = API.authApi.loginWithFacebook(userData)
+				const rs = await API.authApi.loginWithFacebook(userData)
 				if (rs) {
 					window.localStorage.setItem('token', rs.token)
 					history.push(`${ROUTE.USER}${ROUTE.PROFILE}`)

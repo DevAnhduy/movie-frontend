@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './Profile.module.scss'
 import { DEFAULT_AVATAR } from '../../utils/constant'
 import FormUserProfile from './FormUserProfile/FormUserProfile'
 import { UserContext } from '../../context/user.context'
+import { ButtonCommon } from '../../common'
 
 export const Profile = () => {
 	const [userContext] = useContext(UserContext)
+	const [isLoading, setIsLoading] = useState(false)
+
+	const onLogout = () => {
+		window.localStorage.removeItem('token')
+		window.location.href = '/login'
+	}
 
 	return (
 		<section className={styles.profile}>
@@ -17,6 +24,14 @@ export const Profile = () => {
 					alt="currentUser"
 				/>
 				<FormUserProfile user={userContext} />
+				<ButtonCommon
+					type="primary"
+					loading={isLoading}
+					onClick={onLogout}
+					size="small"
+				>
+					Đăng xuất
+				</ButtonCommon>
 			</div>
 		</section>
 	)

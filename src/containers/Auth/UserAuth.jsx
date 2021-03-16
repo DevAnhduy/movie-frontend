@@ -3,7 +3,7 @@ import API from '../../api/index.api'
 import { LoadingCommon } from '../../common'
 import { UserContext } from '../../context/user.context'
 import { withRouter, Redirect } from 'react-router-dom'
-import { Profile } from '../Profile/Profile'
+import { Profile, Dashboard } from '..'
 import { ROUTE } from '../../utils/constant'
 
 const UserAuthComponent = ({ children, history }) => {
@@ -30,11 +30,12 @@ const UserAuthComponent = ({ children, history }) => {
 	if (isLoading) {
 		return <LoadingCommon size="large" isFullHeight />
 	} else {
-		if (userContext) {
-			return <Profile />
-		} else {
-			return <Redirect to="/login" />
-		}
+		return <Dashboard />
+		// if (userContext) {
+		// 	return <Dashboard />
+		// } else {
+		// 	return <Redirect to="/login" />
+		// }
 	}
 }
 
