@@ -1,0 +1,35 @@
+@import '../../styles/variable.scss';
+
+.dashboard {
+	.banner {
+		> img {
+			width: 100%;
+		}
+	}
+	.slideVideo {
+		width: 1170px;
+		margin: 20px auto;
+		padding-left: 15px;
+		padding-right: 15px;
+		:global {
+			.slick-slider {
+				width: 100%;
+			}
+		}
+		.header {
+			margin-bottom: 25px;
+			text-align: center;
+			.titleHeader {
+				font-size: 35px;
+				font-weight: 700;
+				color: $color-black;
+				margin: 0;
+				position: relative;
+				display: inline-block;
+				.titleHightlight {
+					color: $color-primary-4;
+				}
+			}
+		}
+	}
+}
