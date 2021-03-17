@@ -1,15 +1,16 @@
 import React from 'react'
-import { Navbar, SlideCommon, VideoCard } from '../../common'
+import { Navbar, SearchBar, Footer, VideoCard } from '../../common'
 import styles from './Dashboard.module.scss'
 import defaultBG from '../../assests/images/img_50.jpg'
 import Slider from 'react-slick'
+import { ListMovie } from '../ListMovie/ListMovie'
 
 export const Dashboard = () => {
 	const settings = {
 		slidesToShow: 8,
 		slidesToScroll: 8,
 		autoplay: true,
-		autoplaySpeed: 3000,
+		autoplaySpeed: 5000,
 		infinite: true,
 		arrows: true,
 		responsive: [
@@ -49,7 +50,7 @@ export const Dashboard = () => {
 				<div className={styles.header}>
 					<h2 className={styles.titleHeader}>
 						<span>Top </span>
-						<span className={styles.titleHightlight}>movies</span>
+						<span className={styles.titleHighlight}>movies</span>
 					</h2>
 				</div>
 				<Slider {...settings}>
@@ -66,6 +67,9 @@ export const Dashboard = () => {
 					<VideoCard />
 				</Slider>
 			</div>
+			<SearchBar />
+			<ListMovie />
+			<Footer />
 		</section>
 	)
 }

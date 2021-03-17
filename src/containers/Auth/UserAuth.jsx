@@ -3,8 +3,9 @@ import API from '../../api/index.api'
 import { LoadingCommon } from '../../common'
 import { UserContext } from '../../context/user.context'
 import { withRouter, Redirect } from 'react-router-dom'
-import { Profile, Dashboard } from '..'
+import { Profile, PlayMoviePage } from '..'
 import { ROUTE } from '../../utils/constant'
+import { Dashboard } from '../Dashboard/Dashboard'
 
 const UserAuthComponent = ({ children, history }) => {
 	const [userContext, setUserContext] = useContext(UserContext)

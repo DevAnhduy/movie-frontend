@@ -1,0 +1,64 @@
+.listMovieWrapper {
+	margin-bottom: 30px;
+	width: 1170px;
+	margin: 20px auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	display: flex;
+	.listMovie {
+		width: 70%;
+		.movies {
+			.item {
+				display: inline-block;
+				width: calc(100% / 5);
+			}
+		}
+		.filter {
+			ul {
+				margin-bottom: 25px;
+				list-style: outside none none;
+				padding: 0;
+				width: 100%;
+				display: table;
+				li {
+					display: block;
+					position: relative;
+					float: left;
+					margin-right: 35px;
+
+					a {
+						font-family: 'Roboto Condensed', Arial, sans-serif;
+						font-style: normal;
+						font-weight: 700;
+						position: relative;
+						display: block;
+						font-size: 30px;
+						font-weight: bold;
+						margin-right: -1px;
+						transition: none;
+					}
+					&::after {
+						content: '/';
+						font-size: 28px;
+						font-weight: bold;
+						position: absolute;
+						right: -22px;
+						top: 0;
+					}
+					&.active {
+						color: #fe7900;
+					}
+				}
+			}
+		}
+	}
+	.bannerWrapper {
+		width: 30%;
+		.banner {
+			&:first-child {
+				margin-top: 0;
+			}
+			margin-top: 2rem;
+		}
+	}
+}

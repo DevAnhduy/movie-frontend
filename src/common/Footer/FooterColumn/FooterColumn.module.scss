@@ -1,0 +1,29 @@
+.footerColumn {
+	.title {
+		display: inline-block;
+		font-size: 25px;
+		font-weight: bold;
+		margin-bottom: 20px;
+		margin-top: 0;
+		position: relative;
+		line-height: 32px;
+		display: block;
+		min-height: 25px;
+		position: relative;
+	}
+	.content {
+		border-top: none;
+		padding: 0;
+		.listItem {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			.item {
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+				color: #aaa;
+				font-size: 14px;
+			}
+		}
+	}
+}

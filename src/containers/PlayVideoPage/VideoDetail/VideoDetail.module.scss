@@ -1,0 +1,87 @@
+.videoDetailWrapper {
+	background-color: #eeee;
+	.videoDetail {
+		width: 1170px;
+		margin: auto;
+		padding: 50px 15px;
+		// margin: 0 auto 20px;
+		// padding-top: 20px;
+		// padding-left: 15px;
+		// padding-right: 15px;
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-family: 'Roboto Condensed', Arial, sans-serif;
+			font-style: normal;
+			font-weight: 700;
+		}
+		.listServer {
+			.serverItem {
+				display: flex;
+				align-items: center;
+				border-bottom: 1px dotted #d4d4d4;
+				.name {
+					font-family: 'Roboto Condensed', sans-serif;
+					color: #202020;
+					min-width: 135px;
+				}
+				.options {
+					flex-grow: 1;
+					padding: 15px 20px;
+					border-left: 1px dotted #d4d4d4;
+					span {
+						display: inline-block;
+						font-size: 13px;
+						background: #e1e1e1;
+						color: #666666;
+						padding: 8px;
+						float: left;
+						margin-right: 3px;
+						margin-bottom: 3px;
+						line-height: 1;
+						min-width: 32px;
+						text-align: center;
+						cursor: pointer;
+						&.active {
+							background: #fe7900;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+		.description {
+			margin-top: 40px;
+			h3 {
+				font-family: 'Roboto Condensed', Arial, sans-serif;
+				font-style: normal;
+				font-weight: 700;
+			}
+			.infoList {
+				margin: 0;
+				padding: 0;
+				li {
+					list-style: none;
+					font-size: 14px;
+					font-family: sans-serif;
+					label {
+						color: #202020;
+						display: inline-block;
+						margin-bottom: 5px;
+						font-weight: 400;
+					}
+					a {
+						color: #666;
+						cursor: pointer;
+						outline: medium none;
+						text-decoration: none;
+						-webkit-transition: all 0.3s ease 0s;
+						-o-transition: all 0.3s ease 0s;
+						transition: all 0.3s ease 0s;
+					}
+				}
+			}
+		}
+	}
+}

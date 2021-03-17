@@ -1,0 +1,16 @@
+.footer {
+	background: url('../../assests/images/footer_bg.png');
+	background-size: cover;
+	min-height: 514px;
+	padding-top: 100px;
+	color: #bdbdbd;
+	font-size: 15px;
+	.content {
+		width: 1170px;
+		margin: 20px auto;
+		padding-left: 15px;
+		padding-right: 15px;
+		grid-template-columns: repeat(4, 1fr);
+		display: grid;
+	}
+}
