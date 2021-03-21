@@ -1,7 +1,7 @@
 import React from 'react'
 import { VideoCard } from '../../common'
 import styles from './ListMovie.module.scss'
-import defaultBanner from '../../assests/images/img_64.jpg'
+import defaultBanner from '../../assets/images/img_64.jpg'
 
 export const ListMovie = () => {
 	return (
@@ -10,13 +10,13 @@ export const ListMovie = () => {
 				<div className={styles.filter}>
 					<ul>
 						<li className={styles.active}>
-							<a>Action</a>
+							<a href="/">Action</a>
 						</li>
 						<li>
-							<a>Adventure</a>
+							<a href="/">Adventure</a>
 						</li>
 						<li>
-							<a>Horror</a>
+							<a href="/">Horror</a>
 						</li>
 					</ul>
 				</div>
@@ -106,10 +106,10 @@ export const ListMovie = () => {
 			</div>
 			<div className={styles.bannerWrapper}>
 				<div className={styles.banner}>
-					<img src={defaultBanner} />
+					<img src={defaultBanner} alt="banner" />
 				</div>
 				<div className={styles.banner}>
-					<img src={defaultBanner} />
+					<img src={defaultBanner} alt="banner" />
 				</div>
 			</div>
 		</section>

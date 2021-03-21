@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Navbar.module.scss'
-import Logo from '../../assests/images/img_66.png'
+import Logo from '../../assets/images/logo.svg'
+import { ROUTE } from '../../utils/constant'
 
 export const Navbar = () => {
 	return (
@@ -8,7 +9,10 @@ export const Navbar = () => {
 			<div className={styles.container}>
 				<div className={styles.left}>
 					<div className={styles.logo}>
-						<img src={Logo} />
+						<a href={ROUTE.DASHBOARD}>
+							<img src={Logo} alt="logo" />
+							<p className={styles.logoName}>Movie247</p>
+						</a>
 					</div>
 					<div className={styles.searchBar}>
 						<input type="text" placeholder="Movie search...." />

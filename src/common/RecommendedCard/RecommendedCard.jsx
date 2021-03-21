@@ -1,22 +1,25 @@
 import React from 'react'
 import styles from './RecommendedCard.module.scss'
-import defaultBG from '../../assests/images/img_50.jpg'
+import defaultImage from '../../assets/images/img_64.jpg'
 
 export const RecommendedCard = () => {
 	return (
 		<div className={styles.recommendedCard}>
 			<div className={styles.poster}>
-				<img src={defaultBG} />
+				<img src={defaultImage} alt="poster" />
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.title}>
-					<a>Anh Duy</a>
+					<a href="/">Anh Duy</a>
 				</h2>
 				<div>
 					<span className={styles.duration}>02 hours 50 minutes</span>
 				</div>
 				<div className={styles.category}>
-					<span>Cartoon</span> ,<span>Comedy</span>
+					<span>
+						<a href="/">Cartoon , </a>
+						<a href="/">Comedy</a>
+					</span>
 				</div>
 				<div className={styles.rating}>
 					<ul className={styles.star}>

@@ -8,6 +8,8 @@ export const ROUTE = {
 	LOGIN: '/login',
 	USER: '/user',
 	PROFILE: '/profile',
+	VIDEO: '/video',
+	FILTER: '/filter',
 }
 
 export const METHOD_AXIOS = {

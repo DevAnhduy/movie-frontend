@@ -1,3 +1,4 @@
+@import '../../styles/variable.scss';
 .searchBar {
 	margin-bottom: 30px;
 	width: 1170px;
@@ -27,6 +28,9 @@
 			&:first-child {
 				margin-left: 0;
 			}
+			&:focus {
+				outline: 1px solid $color-primary-4;
+			}
 		}
 	}
 	.action {
@@ -47,6 +51,9 @@
 			-o-transition: border-color ease-in-out 0.15s;
 			transition: border-color ease-in-out 0.15s;
 			-webkit-appearance: none;
+			&:focus {
+				outline: 1px solid $color-primary-4;
+			}
 		}
 		.btnSearch {
 			background: #fe7900;

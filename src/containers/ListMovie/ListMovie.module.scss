@@ -25,7 +25,6 @@
 					position: relative;
 					float: left;
 					margin-right: 35px;
-
 					a {
 						font-family: 'Roboto Condensed', Arial, sans-serif;
 						font-style: normal;
@@ -36,6 +35,12 @@
 						font-weight: bold;
 						margin-right: -1px;
 						transition: none;
+						color: #202020;
+					}
+					&.active {
+						a {
+							color: #fe7900;
+						}
 					}
 					&::after {
 						content: '/';
@@ -44,9 +49,6 @@
 						position: absolute;
 						right: -22px;
 						top: 0;
-					}
-					&.active {
-						color: #fe7900;
 					}
 				}
 			}

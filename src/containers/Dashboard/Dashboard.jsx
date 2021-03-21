@@ -1,8 +1,7 @@
 import React from 'react'
-import { Navbar, SearchBar, Footer, VideoCard } from '../../common'
+import { Navbar, SearchBar, Footer, VideoCard, SlideCommon } from '../../common'
 import styles from './Dashboard.module.scss'
-import defaultBG from '../../assests/images/img_50.jpg'
-import Slider from 'react-slick'
+import defaultBG from '../../assets/images/img_50.jpg'
 import { ListMovie } from '../ListMovie/ListMovie'
 
 export const Dashboard = () => {
@@ -30,7 +29,7 @@ export const Dashboard = () => {
 				breakpoint: 1440,
 				settings: {
 					slidesToShow: 7,
-					slidesToScroll: 7,
+					slidesToScroll: 2,
 				},
 			},
 			{
@@ -44,7 +43,7 @@ export const Dashboard = () => {
 		<section className={styles.dashboard}>
 			<Navbar />
 			<div className={styles.banner}>
-				<img src={defaultBG} />
+				<img src={defaultBG} alt="banner" />
 			</div>
 			<div className={styles.slideVideo}>
 				<div className={styles.header}>
@@ -53,7 +52,7 @@ export const Dashboard = () => {
 						<span className={styles.titleHighlight}>movies</span>
 					</h2>
 				</div>
-				<Slider {...settings}>
+				<SlideCommon settings={settings}>
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
@@ -65,7 +64,7 @@ export const Dashboard = () => {
 					<VideoCard />
 					<VideoCard />
 					<VideoCard />
-				</Slider>
+				</SlideCommon>
 			</div>
 			<SearchBar />
 			<ListMovie />

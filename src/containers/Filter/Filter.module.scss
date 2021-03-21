@@ -1,0 +1,27 @@
+@import '../../styles/variable.scss';
+
+.filter {
+	.banner {
+		> img {
+			width: 100%;
+		}
+	}
+	.content {
+		width: 1170px;
+		margin: 20px auto;
+		padding-left: 15px;
+		padding-right: 15px;
+		display: flex;
+		.listMovie {
+			width: 70%;
+			:global {
+				.ant-pagination {
+					text-align: center;
+				}
+			}
+		}
+		.recommended {
+			width: 30%;
+		}
+	}
+}

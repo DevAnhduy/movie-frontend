@@ -32,31 +32,31 @@ export const VideoDetail = () => {
 						<li>
 							<label>Actor : </label>
 							<span>
-								<a>Alexander Cattly</a>
+								<a href="/">Alexander Cattly</a>
 							</span>
 						</li>
 						<li>
 							<label>Director : </label>
 							<span>
-								<a>Greta Garbo</a>
+								<a href="/">Greta Garbo</a>
 							</span>
 						</li>
 						<li>
 							<label>Genre : </label>
 							<span>
-								<a>Drama</a>
+								<a href="/">Drama</a>
 							</span>
 						</li>
 						<li>
 							<label>Release : </label>
 							<span>
-								<a>May 7, 2017</a>
+								<a href="/">May 7, 2017</a>
 							</span>
 						</li>
 						<li>
 							<label>IMDB Rating : </label>
 							<span>
-								<a>7.9</a>
+								<a href="/">7.9</a>
 							</span>
 						</li>
 					</ul>

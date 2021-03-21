@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './PlayVideoPage.module.scss'
-import { Navbar, PlayVideo, Footer, VideoCard } from '../../common'
+import { Navbar, PlayVideo, Footer } from '../../common'
 import { VideoDetail } from './VideoDetail/VideoDetail'
 
 export const PlayMoviePage = () => {

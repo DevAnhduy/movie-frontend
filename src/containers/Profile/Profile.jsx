@@ -7,7 +7,7 @@ import { ButtonCommon } from '../../common'
 
 export const Profile = () => {
 	const [userContext] = useContext(UserContext)
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading] = useState(false)
 
 	const onLogout = () => {
 		window.localStorage.removeItem('token')
