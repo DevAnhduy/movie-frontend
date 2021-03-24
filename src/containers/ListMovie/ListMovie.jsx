@@ -2,6 +2,7 @@ import React from 'react'
 import { ButtonCommon, VideoCard } from '../../common'
 import styles from './ListMovie.module.scss'
 import PropTypes from 'prop-types'
+import Skeleton from 'react-loading-skeleton'
 import banner1 from '../../assets/images/banner_1.jpg'
 import banner2 from '../../assets/images/banner_2.jpg'
 import banner3 from '../../assets/images/banner_3.jpg'
@@ -24,12 +25,19 @@ export const ListMovie = ({ listMovies, onViewMore, isLoading }) => {
 					</ul>
 				</div>
 				<div className={styles.movies}>
-					{listMovies &&
-						listMovies.map((movie, index) => (
-							<div className={styles.item} key={index}>
-								<VideoCard data={movie} />
-							</div>
-						))}
+					{listMovies.length
+						? listMovies.map((movie, index) => (
+								<div className={styles.item} key={index}>
+									<VideoCard data={movie} />
+								</div>
+						  ))
+						: Array(10)
+								.fill('')
+								.map((item, index) => (
+									<div className={styles.item} key={index}>
+										<VideoCard data={item} />
+									</div>
+								))}
 				</div>
 				<div className={styles.btnViewmore}>
 					<ButtonCommon
@@ -59,4 +67,5 @@ export const ListMovie = ({ listMovies, onViewMore, isLoading }) => {
 ListMovie.propTypes = {
 	listMovies: PropTypes.array,
 	onViewMore: PropTypes.func,
+	isLoading: PropTypes.bool,
 }

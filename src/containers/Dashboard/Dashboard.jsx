@@ -62,7 +62,9 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 						? movies.top.map((movie, index) => (
 								<VideoCard key={index} data={movie} />
 						  ))
-						: ''}
+						: new Array(10).fill('').map((e, index) => {
+								return <VideoCard key={index} data="" />
+						  })}
 				</SlideCommon>
 			</div>
 			<SearchBar />

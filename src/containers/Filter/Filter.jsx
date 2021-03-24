@@ -14,7 +14,7 @@ const FilterComponent = ({ location }) => {
 		if (location) {
 			const { filter } = location.state
 			const getMovieFilter = async () => {
-				const movies = await api.movieApi.searchMovie(1, filter)
+				const movies = await api.movieApi.searchMovie(filter, 1)
 				setMovies(movies.data)
 			}
 			getMovieFilter()
@@ -29,10 +29,23 @@ const FilterComponent = ({ location }) => {
 			</div>
 			<div className={styles.content}>
 				<div className={styles.listMovie}>
-					{movies &&
-						movies.map((movie, index) => (
-							<VideoCard key={index} size="large" data={movie} />
-						))}
+					{movies
+						? movies.map((movie, index) => (
+								<VideoCard
+									key={index}
+									size="large"
+									data={movie}
+								/>
+						  ))
+						: new Array(6).fill('').map((e, index) => {
+								return (
+									<VideoCard
+										key={index}
+										size="large"
+										data={''}
+									/>
+								)
+						  })}
 					<Pagination total={50} current={1} />
 				</div>
 				<div className={styles.recommended}>

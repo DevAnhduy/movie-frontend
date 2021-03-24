@@ -5,8 +5,10 @@ import { Popover } from 'antd'
 import { CaretRightOutlined, InfoOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Skeleton from 'react-loading-skeleton'
 
 export const VideoCard = ({ size, data }) => {
+	console.log(data)
 	const randomNumber = Math.floor(Math.random() * (10 - 8)) + 8
 	return (
 		<div className={`${styles.videoCard} ${styles[size]}`}>
@@ -104,13 +106,20 @@ export const VideoCard = ({ size, data }) => {
 			>
 				<div className={styles.front}>
 					<div className={styles.poster}>
-						<Link to={`/video/${data && data.slug}`}>
-							<img
-								src={data ? data.poster : defaultImage}
-								alt="something"
-							/>
-						</Link>
-						<span className={styles.score}>{randomNumber}</span>
+						{data ? (
+							<Link to={`/video/${data && data.slug}`}>
+								<img
+									src={data ? data.poster : defaultImage}
+									alt="something"
+								/>
+							</Link>
+						) : (
+							<Skeleton width={140} height={230} />
+						)}
+
+						{data && (
+							<span className={styles.score}>{randomNumber}</span>
+						)}
 					</div>
 					<div className={styles.content}>
 						<h3 className={styles.title}>{data && data.name}</h3>
