@@ -6,7 +6,7 @@ import banner1 from '../../assets/images/banner_1.jpg'
 import banner2 from '../../assets/images/banner_2.jpg'
 import banner3 from '../../assets/images/banner_3.jpg'
 
-export const ListMovie = ({ listMovies, onViewMore }) => {
+export const ListMovie = ({ listMovies, onViewMore, isLoading }) => {
 	return (
 		<section className={styles.listMovieWrapper}>
 			<div className={styles.listMovie}>
@@ -32,7 +32,11 @@ export const ListMovie = ({ listMovies, onViewMore }) => {
 						))}
 				</div>
 				<div className={styles.btnViewmore}>
-					<ButtonCommon type="primary" onClick={onViewMore}>
+					<ButtonCommon
+						type="primary"
+						onClick={onViewMore}
+						loading={isLoading}
+					>
 						Xem thêm
 					</ButtonCommon>
 				</div>

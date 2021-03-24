@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 	const [currentPage, setCurrentPage] = useState(1)
 	const [moviesStore, setMoviesStore] = useState([])
+	const [isLoading, setIsLoading] = useState(false)
 
 	useEffect(() => {
 		if (onGetTopMovies) {
@@ -20,7 +21,9 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 
 	useEffect(() => {
 		if (onSearchMovies && currentPage !== 1) {
-			onSearchMovies(currentPage)
+			onSearchMovies(currentPage, () => {
+				setIsLoading(false)
+			})
 		}
 	}, [currentPage, onSearchMovies])
 
@@ -37,6 +40,7 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 	}, [movies.all])
 
 	const onViewMore = () => {
+		setIsLoading(true)
 		setCurrentPage(currentPage + 1)
 	}
 
@@ -62,7 +66,11 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 				</SlideCommon>
 			</div>
 			<SearchBar />
-			<ListMovie listMovies={moviesStore} onViewMore={onViewMore} />
+			<ListMovie
+				listMovies={moviesStore}
+				onViewMore={onViewMore}
+				isLoading={isLoading}
+			/>
 			<Footer />
 		</section>
 	)

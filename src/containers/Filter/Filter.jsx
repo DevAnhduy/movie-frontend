@@ -14,7 +14,7 @@ const FilterComponent = ({ location }) => {
 		if (location) {
 			const { filter } = location.state
 			const getMovieFilter = async () => {
-				const movies = await api.movieApi.searchMovie(filter)
+				const movies = await api.movieApi.searchMovie(1, filter)
 				setMovies(movies.data)
 			}
 			getMovieFilter()
