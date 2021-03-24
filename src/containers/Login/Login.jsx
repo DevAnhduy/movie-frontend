@@ -1,12 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Form, Input } from 'antd'
-import { ButtonCommon, LoginWithGoogle, LoginWithFacebook } from '../../common'
+import {
+	ButtonCommon,
+	LoginWithGoogle,
+	LoginWithFacebook,
+	Navbar,
+} from '../../common'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import styles from './Login.module.scss'
 import { UserContext } from '../../context/user.context'
-import API from '../../api/index.api'
+import api from '../../api/index.api'
 import PropTypes from 'prop-types'
 import { ROUTE } from '../../utils/constant'
+import {
+	showMessageError,
+	showMessageSuccess,
+} from '../../utils/function.utils'
 
 const LoginComponent = ({ history }) => {
 	const [form] = Form.useForm()
@@ -17,7 +26,7 @@ const LoginComponent = ({ history }) => {
 		const token = window.localStorage.getItem('token')
 		if (token) {
 			const getUserProfile = async () => {
-				const result = await API.userApi.getMe()
+				const result = await api.userApi.getMe()
 
 				if (result) {
 					setUserContext(result.data)
@@ -31,26 +40,26 @@ const LoginComponent = ({ history }) => {
 
 	const onSubmit = async () => {
 		setIsLoading(true)
-		// try {
-		// 	const values = await form.validateFields()
-		// 	await api.userApi.login(values)
-		// 	try {
-		// 		const profile = await api.userApi.getMe()
+		try {
+			const values = await form.validateFields()
+			await api.userApi.login(values)
+			try {
+				const profile = await api.userApi.getMe()
 
-		// 		if (profile) {
-		// 			showMessageSuccess()
-		// 			history.push('/')
-		// 		} else throw new Error('User not a admin')
-		// 	} catch (err) {
-		// 		console.debug('result: ', err)
-		// 		showMessageError()
-		// 		setIsLoading(false)
-		// 	}
-		// } catch (err) {
-		// 	console.debug('result: ', err)
-		// 	showMessageError()
-		// 	setIsLoading(false)
-		// }
+				if (profile) {
+					showMessageSuccess()
+					history.push('/')
+				} else throw new Error('User not a admin')
+			} catch (err) {
+				console.debug('result: ', err)
+				showMessageError()
+				setIsLoading(false)
+			}
+		} catch (err) {
+			console.debug('result: ', err)
+			showMessageError()
+			setIsLoading(false)
+		}
 	}
 
 	return (

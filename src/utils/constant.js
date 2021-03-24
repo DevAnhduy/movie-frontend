@@ -1,4 +1,4 @@
-export const API_URL = 'https://movie-app-api-123.herokuapp.com'
+export const API_URL = 'http://localhost:3000'
 export const PATTERN_PHONE = new RegExp(
 	/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,9}$/g
 )
@@ -52,3 +52,95 @@ export const FORM_RULE = {
 		message: MESSAGE.INVALID_PHONE,
 	},
 }
+
+export const HOME_SLIDE_SETTINGS = {
+	slidesToShow: 8,
+	slidesToScroll: 8,
+	autoplay: true,
+	autoplaySpeed: 5000,
+	infinite: true,
+	arrows: true,
+	responsive: [
+		{
+			breakpoint: 480,
+			settings: { slidesToShow: 2, slidesToScroll: 2 },
+		},
+		{
+			breakpoint: 768,
+			settings: { slidesToShow: 3, slidesToScroll: 3 },
+		},
+		{
+			breakpoint: 992,
+			settings: { slidesToShow: 4, slidesToScroll: 4 },
+		},
+		{
+			breakpoint: 1440,
+			settings: {
+				slidesToShow: 7,
+				slidesToScroll: 2,
+			},
+		},
+		{
+			breakpoint: 4999,
+			settings: { slidesToShow: 8, slidesToScroll: 8 },
+		},
+	],
+	dots: false,
+}
+
+export const MOVIE_YEAR = [
+	{
+		displayName: '2020',
+		value: '2020',
+	},
+	{
+		displayName: '2019',
+		value: '2019',
+	},
+	{
+		displayName: '2018',
+		value: '2018',
+	},
+	{
+		displayName: '2017',
+		value: '2019',
+	},
+	{
+		displayName: '2016',
+		value: 2016,
+	},
+]
+
+export const MOVIE_TYPE = [
+	{
+		displayName: 'Phim lẻ',
+		value: 'Phim lẻ',
+	},
+	{
+		displayName: 'Phim bộ',
+		value: 'Phim bộ',
+	},
+]
+
+export const MOVIE_COUNTRY = [
+	{
+		displayName: 'Việt Nam',
+		value: 'Việt Nam',
+	},
+	{
+		displayName: 'Brazil',
+		value: 'Brazil',
+	},
+	{
+		displayName: 'United States',
+		value: 'United States',
+	},
+	{
+		displayName: 'Thái Lan',
+		value: 'Thái Lan',
+	},
+	{
+		displayName: 'Nhật Bản',
+		value: 'Nhật Bản',
+	},
+]

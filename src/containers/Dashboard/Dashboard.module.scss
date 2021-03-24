@@ -15,6 +15,24 @@
 			.slick-slider {
 				width: 100%;
 			}
+			.slick-arrow {
+				z-index: 2;
+				top: 40%;
+			}
+			.slick-prev {
+				left: -35px;
+				&::before {
+					font-size: 40px !important;
+					color: black !important;
+				}
+			}
+			.slick-next {
+				right: -12px;
+				&::before {
+					font-size: 40px !important;
+					color: black !important;
+				}
+			}
 		}
 		.header {
 			margin-bottom: 25px;

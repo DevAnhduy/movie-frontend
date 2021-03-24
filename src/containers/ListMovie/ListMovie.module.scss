@@ -1,3 +1,5 @@
+@import '../../styles/variable.scss';
+
 .listMovieWrapper {
 	margin-bottom: 30px;
 	width: 1170px;
@@ -7,6 +9,21 @@
 	display: flex;
 	.listMovie {
 		width: 70%;
+		.btnViewmore {
+			text-align: center;
+			:global {
+				.ant-btn-primary {
+					background-color: $color-warning;
+					color: $color-black;
+					border: none;
+					border-radius: 5px;
+					font-size: $font-size-subtitle1;
+					height: 3rem;
+					padding: 0 2rem;
+					margin-top: 1rem;
+				}
+			}
+		}
 		.movies {
 			.item {
 				display: inline-block;
@@ -59,6 +76,9 @@
 		.banner {
 			&:first-child {
 				margin-top: 0;
+			}
+			img {
+				width: 100%;
 			}
 			margin-top: 2rem;
 		}

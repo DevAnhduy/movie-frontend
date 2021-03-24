@@ -1,0 +1,19 @@
+@import '../../styles/variable.scss';
+
+.logo {
+	img {
+		vertical-align: middle;
+		height: 40px;
+		width: 40px;
+		margin-top: -1.5rem;
+	}
+	.logoName {
+		display: inline-block;
+		margin: 0;
+		font-size: 2rem;
+		font-weight: bold;
+		letter-spacing: 7px;
+		color: $color-primary-4;
+		margin-left: 1rem;
+	}
+}

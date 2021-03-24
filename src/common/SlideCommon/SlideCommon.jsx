@@ -18,5 +18,5 @@ export const SlideCommon = ({
 
 SlideCommon.propTypes = {
 	settings: PropTypes.object,
-	children: PropTypes.object,
+	children: PropTypes.array,
 }

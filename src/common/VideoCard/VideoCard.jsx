@@ -3,8 +3,11 @@ import styles from './VideoCard.module.scss'
 import defaultImage from '../../assets/images/img_64.jpg'
 import { Popover } from 'antd'
 import { CaretRightOutlined, InfoOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export const VideoCard = ({ size }) => {
+export const VideoCard = ({ size, data }) => {
+	const randomNumber = Math.floor(Math.random() * (10 - 8)) + 8
 	return (
 		<div className={`${styles.videoCard} ${styles[size]}`}>
 			<Popover
@@ -13,8 +16,12 @@ export const VideoCard = ({ size }) => {
 					<div className={styles.back}>
 						<div className={styles.inner}>
 							<div className={styles.content}>
-								<span className={styles.score}>8.3</span>
-								<h3 className={styles.title}>Anh Duy</h3>
+								<span className={styles.score}>
+									{randomNumber}
+								</span>
+								<h3 className={styles.title}>
+									{data && data.name}
+								</h3>
 								<div className={styles.rating}>
 									<div className={styles.ratingInner}>
 										<div className={styles.ratingStars}>
@@ -29,39 +36,36 @@ export const VideoCard = ({ size }) => {
 								</div>
 								<div className={styles.meta}>
 									<span className={styles.duration}>
-										02 hours 40 minutes
+										{data && data.duration} phút
 									</span>
 								</div>
 								<div className={styles.desc}>
-									<p>
-										Sed ut perspiciatis unde omnis iste
-										natus error sit voluptatem accusantium
-										doloremque laudantium, totam rem
-										aperiam, ...
-									</p>
+									<p>{data && data.description}</p>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Release Date : </label>
+									<label>Năm phát hành : </label>
 									<div className={styles.fieldContent}>
-										<a href="/">27/1/2021</a>
+										<a href="/">
+											{data && data.release_year}
+										</a>
 									</div>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Nation : </label>
+									<label>Quốc gia : </label>
 									<div className={styles.fieldContent}>
-										<a href="/">Brazil, </a>
-										<a href="/">USA, </a>
-										<a href="/">Japan</a>
+										<a href="/">{data && data.country}</a>
 									</div>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Year : </label>
+									<label>Năm : </label>
 									<div className={styles.fieldContent}>
-										<a href="/">2019</a>
+										<a href="/">
+											{data && data.release_year}
+										</a>
 									</div>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Category : </label>
+									<label>Thể loại : </label>
 									<div className={styles.fieldContent}>
 										<a href="/">Cartoon, </a>
 										<a href="/">Action, </a>
@@ -69,19 +73,20 @@ export const VideoCard = ({ size }) => {
 									</div>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Actor : </label>
+									<label>Diễn viên : </label>
 									<div className={styles.fieldContent}>
-										<a href="/">123, </a>
-										<a href="/">Duy, </a>
-										<a href="/">Anh, </a>
+										{data &&
+											data.actor.map((e, index) => (
+												<a href="/" key={index}>
+													{e + ' , '}
+												</a>
+											))}
 									</div>
 								</div>
 								<div className={styles.filterGroup}>
-									<label>Director : </label>
+									<label>Đạo diễn : </label>
 									<div className={styles.fieldContent}>
-										<a href="/">123, </a>
-										<a href="/">Duy, </a>
-										<a href="/">Anh, </a>
+										<a href="/">{data && data.director}</a>
 									</div>
 								</div>
 							</div>
@@ -90,7 +95,7 @@ export const VideoCard = ({ size }) => {
 									<CaretRightOutlined /> Trailer
 								</a>
 								<a href="/" className={styles.btnDetail}>
-									<InfoOutlined /> Detail
+									<InfoOutlined /> Chi tiết
 								</a>
 							</div>
 						</div>
@@ -99,17 +104,27 @@ export const VideoCard = ({ size }) => {
 			>
 				<div className={styles.front}>
 					<div className={styles.poster}>
-						<a href="/">
-							<img src={defaultImage} alt="something" />
-						</a>
-						<span className={styles.score}>8.9</span>
+						<Link to={`/video/${data && data.slug}`}>
+							<img
+								src={data ? data.poster : defaultImage}
+								alt="something"
+							/>
+						</Link>
+						<span className={styles.score}>{randomNumber}</span>
 					</div>
 					<div className={styles.content}>
-						<h3 className={styles.title}>Anh Duy</h3>
-						<div className={styles.releaseDate}>July 28, 2017</div>
+						<h3 className={styles.title}>{data && data.name}</h3>
+						<div className={styles.releaseDate}>
+							{data && data.release_year}
+						</div>
 					</div>
 				</div>
 			</Popover>
 		</div>
 	)
+}
+
+VideoCard.propTypes = {
+	size: PropTypes.string,
+	data: PropTypes.object,
 }

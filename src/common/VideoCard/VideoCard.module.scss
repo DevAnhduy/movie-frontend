@@ -81,6 +81,12 @@
 				text-transform: capitalize;
 				font-weight: 700;
 				color: #202020;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+
 				//margin: 0 0 6px;
 			}
 			.releaseDate {

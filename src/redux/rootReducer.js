@@ -1,22 +1,10 @@
 import { combineReducers } from 'redux'
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import CategoriesReducer from './categories/categories.reducer'
+import MoviesReducer from './movies/movie.reducer'
 
-// save reducer to local storage
-const rootPersistConfig = {
-	key: 'root',
-	storage,
-	whitelist: [],
-}
+const rootReducer = combineReducers({
+	categories: CategoriesReducer,
+	movies: MoviesReducer,
+})
 
-// const userPersistConfig = {
-//     key: 'user',
-//     storage,
-//     whitelist: [
-//         'token', // save only token to storage
-//     ],
-// };
-
-const rootReducer = combineReducers({})
-
-export default persistReducer(rootPersistConfig, rootReducer)
+export default rootReducer

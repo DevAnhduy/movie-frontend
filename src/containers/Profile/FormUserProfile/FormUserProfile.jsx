@@ -4,29 +4,29 @@ import { UserContext } from '../../../context/user.context'
 import styles from './FormUserProfile.module.scss'
 import { FORM_RULE, MESSAGE } from '../../../utils/constant'
 
-const inputs = [
-	{
-		label: 'Email',
-		name: 'email',
-		rules: [FORM_RULE.EMAIL],
-		required: true,
-		isReadOnly: true,
-	},
-	{
-		label: 'Name',
-		name: 'name',
-		required: true,
-	},
-	{
-		label: 'Create type',
-		name: 'create_type',
-		required: true,
-	},
-]
-
-const FormUserProfile = () => {
-	const [user] = useContext(UserContext)
+const FormUserProfile = ({ user }) => {
+	//const [user] = useContext(UserContext)
 	const [form] = Form.useForm()
+
+	const inputs = [
+		{
+			label: 'Email',
+			name: 'email',
+			rules: [FORM_RULE.EMAIL],
+			required: true,
+			isReadOnly: true,
+		},
+		{
+			label: 'Name',
+			name: 'name',
+			required: true,
+		},
+		{
+			label: 'Create type',
+			name: 'create_type',
+			required: true,
+		},
+	]
 
 	return (
 		<div className={`${styles.formUserProfile} u-form-common`}>
@@ -34,9 +34,7 @@ const FormUserProfile = () => {
 				<Form
 					form={form}
 					name="dynamic_rule"
-					initialValues={{
-						...user,
-					}}
+					initialValues={user ? {} : { ...user }}
 				>
 					{inputs.map(item => (
 						<Form.Item

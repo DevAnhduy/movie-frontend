@@ -8,15 +8,13 @@ import 'antd/dist/antd.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './index.css'
-import { PersistGate } from 'redux-persist/integration/react'
-import { store, persistor } from './redux/store'
+//import { PersistGate } from 'redux-persist/integration/react'
+import { store } from './redux/store'
 
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
-			<PersistGate persistor={persistor}>
-				<App />
-			</PersistGate>
+			<App />
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')

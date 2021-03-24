@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Footer, Navbar, RecommendedCard, VideoCard } from '../../common'
 import styles from './Filter.module.scss'
 import defaultBG from '../../assets/images/img_50.jpg'
 import { Pagination } from 'antd'
+import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
+import api from '../../api/index.api'
 
-export const Filter = () => {
+const FilterComponent = ({ location }) => {
+	const [movies, setMovies] = useState()
+
+	useEffect(() => {
+		if (location) {
+			const { filter } = location.state
+			const getMovieFilter = async () => {
+				const movies = await api.movieApi.searchMovie(filter)
+				setMovies(movies.data)
+			}
+			getMovieFilter()
+		}
+	}, [location])
+
 	return (
 		<section className={styles.filter}>
 			<Navbar />
@@ -13,15 +29,10 @@ export const Filter = () => {
 			</div>
 			<div className={styles.content}>
 				<div className={styles.listMovie}>
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
-					<VideoCard size="large" />
+					{movies &&
+						movies.map((movie, index) => (
+							<VideoCard key={index} size="large" data={movie} />
+						))}
 					<Pagination total={50} current={1} />
 				</div>
 				<div className={styles.recommended}>
@@ -37,3 +48,9 @@ export const Filter = () => {
 		</section>
 	)
 }
+
+FilterComponent.propTypes = {
+	location: PropTypes.any,
+}
+
+export const Filter = withRouter(FilterComponent)

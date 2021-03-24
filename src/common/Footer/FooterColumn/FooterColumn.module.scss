@@ -1,4 +1,6 @@
+@import '../../../styles/variable.scss';
 .footerColumn {
+	padding: 0 1rem;
 	.title {
 		display: inline-block;
 		font-size: 25px;
@@ -10,6 +12,7 @@
 		display: block;
 		min-height: 25px;
 		position: relative;
+		color: $color-white;
 	}
 	.content {
 		border-top: none;

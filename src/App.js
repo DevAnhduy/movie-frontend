@@ -22,7 +22,11 @@ function App() {
 					<Route exact path={ROUTE.LOGIN} component={LoginPage} />
 					<Route exact path={ROUTE.DASHBOARD} component={Dashboard} />
 					<Route exact path={ROUTE.FILTER} component={Filter} />
-					<Route exact path={ROUTE.VIDEO} component={PlayMoviePage} />
+					<Route
+						exact
+						path={`${ROUTE.VIDEO}/:slug`}
+						component={PlayMoviePage}
+					/>
 					<UserAuth>
 						<Route
 							exact

@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './VideoDetail.module.scss'
+import PropTypes from 'prop-types'
 
-export const VideoDetail = () => {
+export const VideoDetail = ({ detail }) => {
 	return (
 		<section className={styles.videoDetailWrapper}>
 			<div className={styles.videoDetail}>
-				<h1 className={styles.header}>Welcome to my page</h1>
+				<h1 className={styles.header}>{detail && detail.name}</h1>
 				<div className={styles.listServer}>
 					<div className={styles.serverItem}>
 						<div className={styles.name}>
@@ -27,30 +28,42 @@ export const VideoDetail = () => {
 					</div>
 				</div>
 				<div className={styles.description}>
-					<h3>Movie Info</h3>
+					<h3>Thông tin phim</h3>
 					<ul className={styles.infoList}>
 						<li>
-							<label>Actor : </label>
+							<label>Diễn viên : </label>
 							<span>
-								<a href="/">Alexander Cattly</a>
+								{detail &&
+									detail.actor.map((item, index) => {
+										return (
+											<a href="/" key={index}>
+												{' ' + item + ' , '}
+											</a>
+										)
+									})}
 							</span>
 						</li>
 						<li>
-							<label>Director : </label>
+							<label>Đạo diễn : </label>
 							<span>
-								<a href="/">Greta Garbo</a>
+								<a href="/">{detail && detail.director}</a>
 							</span>
 						</li>
 						<li>
-							<label>Genre : </label>
+							<label>Thể loại : </label>
 							<span>
-								<a href="/">Drama</a>
+								{detail &&
+									detail.category.map((item, index) => (
+										<a href="/" key={index}>
+											{' ' + item.name + ' , '}
+										</a>
+									))}
 							</span>
 						</li>
 						<li>
-							<label>Release : </label>
+							<label>Năm ra mắt : </label>
 							<span>
-								<a href="/">May 7, 2017</a>
+								<a href="/"> {detail && detail.release_year}</a>
 							</span>
 						</li>
 						<li>
@@ -59,9 +72,17 @@ export const VideoDetail = () => {
 								<a href="/">7.9</a>
 							</span>
 						</li>
+						<li>
+							<label>Mô tả :</label>
+							<span> {detail && detail.description}</span>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</section>
 	)
+}
+
+VideoDetail.propTypes = {
+	detail: PropTypes.any,
 }

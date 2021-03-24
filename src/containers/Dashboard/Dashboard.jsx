@@ -1,44 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar, SearchBar, Footer, VideoCard, SlideCommon } from '../../common'
 import styles from './Dashboard.module.scss'
 import defaultBG from '../../assets/images/img_50.jpg'
 import { ListMovie } from '../ListMovie/ListMovie'
+import PropTypes from 'prop-types'
+import { HOME_SLIDE_SETTINGS } from '../../utils/constant'
+import { onGetTopMovies, onSearchMovies } from '../../redux/movies/movie.action'
+import { connect } from 'react-redux'
 
-export const Dashboard = () => {
-	const settings = {
-		slidesToShow: 8,
-		slidesToScroll: 8,
-		autoplay: true,
-		autoplaySpeed: 5000,
-		infinite: true,
-		arrows: true,
-		responsive: [
-			{
-				breakpoint: 480,
-				settings: { slidesToShow: 2, slidesToScroll: 2 },
-			},
-			{
-				breakpoint: 768,
-				settings: { slidesToShow: 3, slidesToScroll: 3 },
-			},
-			{
-				breakpoint: 992,
-				settings: { slidesToShow: 4, slidesToScroll: 4 },
-			},
-			{
-				breakpoint: 1440,
-				settings: {
-					slidesToShow: 7,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 4999,
-				settings: { slidesToShow: 8, slidesToScroll: 8 },
-			},
-		],
-		dots: false,
+const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
+	const [currentPage, setCurrentPage] = useState(1)
+	const [moviesStore, setMoviesStore] = useState([])
+
+	useEffect(() => {
+		if (onGetTopMovies) {
+			onGetTopMovies()
+		}
+	}, [onGetTopMovies])
+
+	useEffect(() => {
+		if (onSearchMovies && currentPage !== 1) {
+			onSearchMovies(currentPage)
+		}
+	}, [currentPage, onSearchMovies])
+
+	useEffect(() => {
+		if (onSearchMovies) {
+			onSearchMovies()
+		}
+	}, [onSearchMovies])
+
+	useEffect(() => {
+		if (movies.all) {
+			setMoviesStore([...moviesStore, ...movies.all])
+		}
+	}, [movies.all])
+
+	const onViewMore = () => {
+		setCurrentPage(currentPage + 1)
 	}
+
 	return (
 		<section className={styles.dashboard}>
 			<Navbar />
@@ -52,23 +53,32 @@ export const Dashboard = () => {
 						<span className={styles.titleHighlight}>movies</span>
 					</h2>
 				</div>
-				<SlideCommon settings={settings}>
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
-					<VideoCard />
+				<SlideCommon settings={HOME_SLIDE_SETTINGS}>
+					{movies.top
+						? movies.top.map((movie, index) => (
+								<VideoCard key={index} data={movie} />
+						  ))
+						: ''}
 				</SlideCommon>
 			</div>
 			<SearchBar />
-			<ListMovie />
+			<ListMovie listMovies={moviesStore} onViewMore={onViewMore} />
 			<Footer />
 		</section>
 	)
 }
+
+DashboardComponent.propTypes = {
+	onGetTopMovies: PropTypes.func,
+	onSearchMovies: PropTypes.func,
+	movies: PropTypes.any,
+}
+
+const mapStateToProps = state => ({
+	movies: state.movies,
+})
+
+export const Dashboard = connect(mapStateToProps, {
+	onGetTopMovies,
+	onSearchMovies,
+})(DashboardComponent)
