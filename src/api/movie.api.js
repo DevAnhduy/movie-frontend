@@ -5,7 +5,7 @@ export class MovieApi extends BaseApi {
 		super('movies')
 	}
 
-	searchMovie = async (query, page) => {
+	searchMovie = async (query, page, limit) => {
 		let queryString = ''
 
 		if (query) {
@@ -16,7 +16,9 @@ export class MovieApi extends BaseApi {
 			})
 		}
 
-		const rs = this.get(`/search?page=${page}&${queryString}`)
+		const rs = this.get(
+			`/search?page=${page}&limit=${limit}&${queryString}`
+		)
 		return rs
 	}
 

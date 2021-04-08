@@ -21,7 +21,7 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 
 	useEffect(() => {
 		if (onSearchMovies && currentPage !== 1) {
-			onSearchMovies(currentPage, () => {
+			onSearchMovies(currentPage, 10, () => {
 				setIsLoading(false)
 			})
 		}
@@ -29,7 +29,7 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 
 	useEffect(() => {
 		if (onSearchMovies) {
-			onSearchMovies()
+			onSearchMovies(1, 10)
 		}
 	}, [onSearchMovies])
 

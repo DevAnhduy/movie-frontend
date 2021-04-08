@@ -1,10 +1,10 @@
 import MoviesTypes from './movies.types'
 import api from '../../api/index.api'
 
-export const onSearchMovies = (page = 1, cb) => {
+export const onSearchMovies = (page = 1, limit = 9, cb) => {
 	return async dispatch => {
 		try {
-			const rs = await api.movieApi.searchMovie({}, page)
+			const rs = await api.movieApi.searchMovie({}, page, limit)
 			dispatch({
 				type: MoviesTypes.SEARCH_MOVIE,
 				payload: rs.data,

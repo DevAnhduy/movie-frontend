@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import Skeleton from 'react-loading-skeleton'
 
 export const VideoCard = ({ size, data }) => {
-	console.log(data)
 	const randomNumber = Math.floor(Math.random() * (10 - 8)) + 8
 	return (
 		<div className={`${styles.videoCard} ${styles[size]}`}>
@@ -135,5 +134,5 @@ export const VideoCard = ({ size, data }) => {
 
 VideoCard.propTypes = {
 	size: PropTypes.string,
-	data: PropTypes.object,
+	data: PropTypes.any,
 }

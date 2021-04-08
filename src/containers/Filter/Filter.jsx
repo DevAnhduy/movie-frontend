@@ -9,6 +9,7 @@ import api from '../../api/index.api'
 
 const FilterComponent = ({ location }) => {
 	const [movies, setMovies] = useState()
+	const [moviesRecommended, setMoviesRecommended] = useState()
 
 	useEffect(() => {
 		if (location) {
@@ -20,6 +21,23 @@ const FilterComponent = ({ location }) => {
 			getMovieFilter()
 		}
 	}, [location])
+
+	useEffect(() => {
+		if (movies && movies.length && movies[0] !== '' && !moviesRecommended) {
+			const firstMovie = movies[0]
+
+			const getMovieRecommended = async () => {
+				const filter = {
+					category: firstMovie.category[0].name,
+				}
+
+				const movies = await api.movieApi.searchMovie(filter, 1, 6)
+				setMoviesRecommended(movies.data)
+			}
+
+			getMovieRecommended()
+		}
+	}, [movies, moviesRecommended])
 
 	return (
 		<section className={styles.filter}>
@@ -49,12 +67,15 @@ const FilterComponent = ({ location }) => {
 					<Pagination total={50} current={1} />
 				</div>
 				<div className={styles.recommended}>
-					<RecommendedCard />
-					<RecommendedCard />
-					<RecommendedCard />
-					<RecommendedCard />
-					<RecommendedCard />
-					<RecommendedCard />
+					{moviesRecommended
+						? moviesRecommended.map((movie, index) => (
+								<RecommendedCard key={index} data={movie} />
+						  ))
+						: new Array(6)
+								.fill('')
+								.map((e, index) => (
+									<RecommendedCard key={index} data={''} />
+								))}
 				</div>
 			</div>
 			<Footer />
