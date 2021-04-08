@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:3000'
+export const API_URL = 'http://18.141.56.9:3000'
 export const PATTERN_PHONE = new RegExp(
 	/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,9}$/g
 )
