@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { MOVIE_TYPE, MOVIE_COUNTRY, MOVIE_YEAR } from '../../utils/constant'
 import { onGetAllCategories } from '../../redux/categories/categories.action'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from 'react-router'
+import { withRouter } from 'react-router'
 
 const SearchBarComponent = ({
 	categories,

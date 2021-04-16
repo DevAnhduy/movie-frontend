@@ -11,7 +11,7 @@ export class MovieApi extends BaseApi {
 		if (query) {
 			const queryArray = Object.keys(query)
 
-			queryArray.map(item => {
+			queryArray.forEach(item => {
 				queryString += `${item}=${query[item].toString()}&`
 			})
 		}

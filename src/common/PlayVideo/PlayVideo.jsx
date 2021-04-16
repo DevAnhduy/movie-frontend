@@ -8,7 +8,7 @@ export const PlayVideo = ({ episode }) => {
 		<section className={styles.playVideo}>
 			<div className={styles.video}>
 				<ReactPlayer
-					url={episode && episode[0].url}
+					url={episode}
 					width={1170}
 					height={680}
 					controls
@@ -20,5 +20,5 @@ export const PlayVideo = ({ episode }) => {
 }
 
 PlayVideo.propTypes = {
-	episode: PropTypes.any,
+	url: PropTypes.any,
 }

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from './Profile.module.scss'
 import { DEFAULT_AVATAR } from '../../utils/constant'
-import FormUserProfile from './FormUserProfile/FormUserProfile'
 import { UserContext } from '../../context/user.context'
 import { ButtonCommon } from '../../common'
 import { Form, Input } from 'antd'
@@ -9,7 +8,6 @@ import { Form, Input } from 'antd'
 export const Profile = () => {
 	const [userContext] = useContext(UserContext)
 	const [isLoading] = useState(false)
-	const [form] = Form.useForm()
 
 	const onLogout = () => {
 		window.localStorage.removeItem('token')

@@ -8,6 +8,7 @@ import api from '../../api/index.api'
 
 const PlayMoviePageComponent = ({ match, history }) => {
 	const [currentMovie, setCurrentMovie] = useState()
+	const [currentEpisode, setCurrentEpisode] = useState()
 
 	useEffect(() => {
 		const { slug } = match.params
@@ -15,6 +16,7 @@ const PlayMoviePageComponent = ({ match, history }) => {
 			const getMovieBySlug = async () => {
 				const movie = await api.movieApi.getMovieBySlug(slug)
 				setCurrentMovie(movie.data)
+				setCurrentEpisode(movie.data.episodes[0].storage[0].url)
 			}
 
 			getMovieBySlug()
@@ -23,13 +25,18 @@ const PlayMoviePageComponent = ({ match, history }) => {
 		}
 	}, [history, match])
 
+	const onChangeEpisode = url => {
+		setCurrentEpisode(url)
+	}
+
 	return (
 		<div className={styles.playMovie}>
 			<Navbar />
-			<PlayVideo
-				episode={currentMovie && currentMovie.episodes[0].storage}
+			<PlayVideo episode={currentEpisode} />
+			<VideoDetail
+				detail={currentMovie && currentMovie}
+				onChangeEpisode={onChangeEpisode}
 			/>
-			<VideoDetail detail={currentMovie && currentMovie} />
 			<Footer />
 		</div>
 	)

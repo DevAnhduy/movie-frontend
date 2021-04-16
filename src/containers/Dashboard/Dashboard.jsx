@@ -37,7 +37,7 @@ const DashboardComponent = ({ onGetTopMovies, onSearchMovies, movies }) => {
 		if (movies.all) {
 			setMoviesStore([...moviesStore, ...movies.all])
 		}
-	}, [movies.all])
+	}, [movies.all, moviesStore])
 
 	const onViewMore = () => {
 		setIsLoading(true)

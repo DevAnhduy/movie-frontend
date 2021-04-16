@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Form, Input } from 'antd'
-import {
-	ButtonCommon,
-	LoginWithGoogle,
-	LoginWithFacebook,
-	Navbar,
-} from '../../common'
+import { ButtonCommon, LoginWithGoogle, LoginWithFacebook } from '../../common'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import styles from './Login.module.scss'
 import { UserContext } from '../../context/user.context'
