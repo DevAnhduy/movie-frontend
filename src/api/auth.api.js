@@ -5,6 +5,11 @@ export class AuthApi extends BaseApi {
 		super('auth')
 	}
 
+	register = async data => {
+		const rs = await this.post('/register', data)
+		return rs
+	}
+
 	loginWithGoogle = async data => {
 		const rs = await this.post('/google', data)
 		return rs
@@ -12,6 +17,11 @@ export class AuthApi extends BaseApi {
 
 	loginWithFacebook = async data => {
 		const rs = await this.post('/facebook', data)
+		return rs
+	}
+
+	login = async data => {
+		const rs = await this.post('/user', data)
 		return rs
 	}
 }

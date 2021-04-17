@@ -9,6 +9,7 @@ import {
 	Dashboard,
 	Filter,
 	PlayMoviePage,
+	RegisterPage,
 } from './containers'
 import { UserContext } from './context/user.context'
 
@@ -22,6 +23,11 @@ function App() {
 					<Route exact path={ROUTE.LOGIN} component={LoginPage} />
 					<Route exact path={ROUTE.DASHBOARD} component={Dashboard} />
 					<Route exact path={ROUTE.FILTER} component={Filter} />
+					<Route
+						exact
+						path={ROUTE.REGISTER}
+						component={RegisterPage}
+					/>
 					<Route
 						exact
 						path={`${ROUTE.VIDEO}/:slug`}

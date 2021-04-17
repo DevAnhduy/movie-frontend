@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Form, Input } from 'antd'
-import { ButtonCommon, LoginWithGoogle, LoginWithFacebook } from '../../common'
+import { Form, Input, message } from 'antd'
+import { ButtonCommon, LoginWithGoogle } from '../../common'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import styles from './Login.module.scss'
+import styles from './Register.module.scss'
 import { UserContext } from '../../context/user.context'
 import api from '../../api/index.api'
 import PropTypes from 'prop-types'
@@ -12,7 +12,7 @@ import {
 	showMessageSuccess,
 } from '../../utils/function.utils'
 
-const LoginComponent = ({ history }) => {
+const RegisterComponent = ({ history }) => {
 	const [form] = Form.useForm()
 	const [isLoading, setIsLoading] = useState(false)
 	const [, setUserContext] = useContext(UserContext)
@@ -37,17 +37,26 @@ const LoginComponent = ({ history }) => {
 		setIsLoading(true)
 		try {
 			const values = await form.validateFields()
-			try {
-				const profile = await api.userApi.getMe()
 
-				if (profile) {
-					showMessageSuccess()
-					history.push('/')
-				} else throw new Error('User not a admin')
-			} catch (err) {
-				console.debug('result: ', err)
-				showMessageError()
+			if (values.password !== values.confirmPassword) {
+				message.error('Mật khẩu xác thực không trùng với mật khẩu')
 				setIsLoading(false)
+			} else {
+				values.social_id = Math.floor(Math.random() * 1000000)
+				values.create_type = 'web'
+
+				try {
+					const rs = await api.authApi.register(values)
+
+					if (rs) {
+						message.success('Tạo tài khoản thành công')
+						setIsLoading(false)
+					}
+				} catch (err) {
+					console.debug('result: ', err)
+					showMessageError()
+					setIsLoading(false)
+				}
 			}
 		} catch (err) {
 			console.debug('result: ', err)
@@ -62,7 +71,6 @@ const LoginComponent = ({ history }) => {
 				<div className={styles.titleForm}>VIEW MOVIE</div>
 				<div className={styles.socialLogin}>
 					<LoginWithGoogle />
-					<LoginWithFacebook />
 				</div>
 				<Form
 					form={form}
@@ -71,18 +79,18 @@ const LoginComponent = ({ history }) => {
 				>
 					<Form.Item
 						className={styles.formItemCustom}
-						name="authEmail"
-						type="string"
+						name="email"
+						type="email"
 						rules={[
 							{ transform: value => (value ? value.trim() : '') },
 							{
 								required: true,
-								message: 'Tài khoản không được bỏ trống!',
+								message: 'Email không được bỏ trống!',
 							},
 						]}
 					>
 						<Input
-							placeholder="Tài khoản"
+							placeholder="Email"
 							type="string"
 							autoFocus
 							prefix={<UserOutlined />}
@@ -108,6 +116,25 @@ const LoginComponent = ({ history }) => {
 						/>
 					</Form.Item>
 
+					<Form.Item
+						className={styles.formItemCustom}
+						name="confirmPassword"
+						type="confirmPassword"
+						rules={[
+							{ transform: value => (value ? value.trim() : '') },
+							{
+								required: true,
+								message: 'Mật khẩu không được bỏ trống',
+							},
+						]}
+					>
+						<Input.Password
+							placeholder="Xác thực mật khẩu"
+							type="confirmPassword"
+							prefix={<LockOutlined />}
+						/>
+					</Form.Item>
+
 					<Form.Item className={styles.formItemBtn}>
 						<ButtonCommon
 							type="primary"
@@ -115,7 +142,7 @@ const LoginComponent = ({ history }) => {
 							onClick={onSubmit}
 							size="small"
 						>
-							Đăng nhập
+							Đăng ký
 						</ButtonCommon>
 					</Form.Item>
 				</Form>
@@ -124,8 +151,8 @@ const LoginComponent = ({ history }) => {
 	)
 }
 
-LoginComponent.propTypes = {
+RegisterComponent.propTypes = {
 	history: PropTypes.object,
 }
 
-export const LoginPage = LoginComponent
+export const RegisterPage = RegisterComponent

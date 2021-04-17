@@ -1,0 +1,89 @@
+@import '../../styles/variable.scss';
+
+.loginWrap {
+	height: 100vh;
+	position: relative;
+	background-image: linear-gradient(
+		187deg,
+		rgba($color-primary-1, 0.5),
+		rgba($color-primary-2, 0.5),
+		#fff 20%,
+		#fff 80%,
+		rgba($color-primary-1, 0.5),
+		rgba($color-primary-2, 0.5)
+	);
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	.cardContainer {
+		background: rgb(0, 147, 233);
+		background: linear-gradient(
+			124deg,
+			$color-primary-1 0%,
+			$color-primary-2 100%
+		);
+		border-radius: 5px;
+		box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+		color: #fff;
+		padding-top: 30px;
+		padding-bottom: 20px;
+		position: relative;
+		width: 30rem;
+		max-width: 100%;
+		text-align: center;
+		margin: auto;
+		.titleForm {
+			font-size: $font-size-heading5;
+			letter-spacing: 3px;
+			font-weight: bold;
+		}
+		.logo {
+			width: 7rem;
+			height: 7rem;
+		}
+		:global {
+			.ant-btn-primary {
+				background-color: $color-warning;
+				color: $color-black;
+				border: none;
+				border-radius: 5px;
+				font-size: $font-size-subtitle1;
+				height: $height-btn-small;
+				margin-top: 1rem;
+			}
+		}
+	}
+	.contentForm {
+		padding: 2rem 3rem 0;
+		.socialLogin {
+			.socialIcon {
+				font-size: 2rem;
+				margin: 0 0.5rem;
+				color: $color-white;
+			}
+		}
+	}
+	.formItemCustom {
+		:global {
+			.ant-form-item-control-input-content {
+				.ant-input-affix-wrapper {
+					border-radius: 5px;
+				}
+			}
+			.ant-form-item-control-input {
+				height: $height-btn-small !important;
+				input {
+					height: $height-btn-small !important;
+				}
+			}
+		}
+	}
+	:global {
+		.ant-form-item-explain {
+			text-align: left;
+			margin: 0.5rem 0;
+		}
+	}
+}

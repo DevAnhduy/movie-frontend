@@ -1,4 +1,5 @@
-export const API_URL = 'https://api.movie.anhduy.host'
+//export const API_URL = 'https://api.movie.anhduy.host'
+export const API_URL = 'http://localhost:3000'
 export const PATTERN_PHONE = new RegExp(
 	/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]{6,9}$/g
 )
@@ -10,6 +11,7 @@ export const ROUTE = {
 	PROFILE: '/profile',
 	VIDEO: '/video',
 	FILTER: '/filter',
+	REGISTER: '/register',
 }
 
 export const METHOD_AXIOS = {

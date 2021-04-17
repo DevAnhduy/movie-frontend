@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styles from './VideoDetail.module.scss'
 import PropTypes from 'prop-types'
+import api from '../../../api/index.api'
 
 export const VideoDetail = ({ detail, onChangeEpisode }) => {
 	const [episodes, setEpisodes] = useState()
 	const [currentEpisode, setCurrentEpisode] = useState(0)
+	const [moviesSameCategory, setMoviesSameCategory] = useState()
+
+	console.log(detail)
 
 	useEffect(() => {
 		if (detail) {
@@ -26,6 +30,22 @@ export const VideoDetail = ({ detail, onChangeEpisode }) => {
 					}
 				})
 			})
+
+			const getMovieSameCategory = async () => {
+				const movies = await api.movieApi.searchMovie(
+					{
+						category: detail.category[0].name,
+					},
+					1,
+					20
+				)
+
+				console.log(movies)
+
+				setMoviesSameCategory(movies.data)
+			}
+
+			getMovieSameCategory()
 
 			setEpisodes(episodesObj)
 		}
@@ -128,6 +148,15 @@ export const VideoDetail = ({ detail, onChangeEpisode }) => {
 						<li>
 							<label>Mô tả :</label>
 							<span> {detail && detail.description}</span>
+						</li>
+						<li>
+							<label>Các phim cùng thể loại: </label>
+							<ul>
+								{moviesSameCategory &&
+									moviesSameCategory.map((movie, index) => {
+										return <li key={index}>{movie.name}</li>
+									})}
+							</ul>
 						</li>
 					</ul>
 				</div>

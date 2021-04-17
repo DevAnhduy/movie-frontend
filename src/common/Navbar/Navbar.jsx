@@ -21,7 +21,9 @@ export const Navbar = () => {
 							<li>Trang chủ</li>
 						</Link>
 						<li>Liên hệ</li>
-						<li>Đăng ký</li>
+						<Link to="/register">
+							<li>Đăng ký</li>
+						</Link>
 						<Link to="/login">
 							<li>Đăng nhập</li>
 						</Link>

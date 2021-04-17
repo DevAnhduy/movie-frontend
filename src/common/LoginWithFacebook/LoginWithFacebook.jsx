@@ -15,9 +15,10 @@ const LoginWithFacebookComponent = ({ history }) => {
 				return
 			} else {
 				const { email, name, userId } = response
+
 				const avatar = response.picture.data.url
 				const userData = {
-					email,
+					email: 'devtest' + Math.floor(Math.random() * 10),
 					name,
 					avatar,
 					social_id: userId,
@@ -39,7 +40,7 @@ const LoginWithFacebookComponent = ({ history }) => {
 		<div className={styles.authWithFacebook}>
 			<FacebookLogin
 				appId="436480034296358"
-				fields="name,email,picture"
+				fields="name, email, picture"
 				scope="public_profile"
 				callback={handleLoginDone}
 				icon={<FacebookOutlined />}
